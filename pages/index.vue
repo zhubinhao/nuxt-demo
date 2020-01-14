@@ -1,17 +1,18 @@
 <template>
-  <div class="container">
-    <div @click="nactveTo">
-      <About :arr="barType" />
-    </div>
+  <div>
+    <Carousel :list="carouselArr" />
+    <main @click="nactveTo" class="main">
+      1211
+    </main>
   </div>
 </template>
 
 <script>
-import About from '~/components/About'
+import Carousel from '~/components/Carousel'
 
 export default {
   components: {
-    About
+    Carousel
   },
   head: {
     title: '深蓝保官网',
@@ -21,22 +22,26 @@ export default {
   },
   data () {
     return {
-      barType: [],
+      carouselArr: [],
+      list: [],
       tetx: 'wodehi',
       msg: ''
     }
   },
   async asyncData ({ app }) {
-    const type = await app.$axios.get('banners?type=1')
+    const banners = await app.$axios.get('banners?type=1')
+    const list = await app.$axios.post('api/articleList', {
+      pageNo: 1,
+      pageSize: 10
+    })
     return {
-      barType: type.data.detail
+      carouselArr: banners.data.detail,
+      list: list.data.list
     }
   },
-  async fetch ({ app, store }) {
-    // const { data } = await app.$axios.get('banners?type=1')
-    // store.commit('setData', data)
-    await store.dispatch('GET_STARS')
-  },
+  // async fetch ({ app, store }) {
+  //   await store.dispatch('GET_STARS')
+  // },
   created () {
   },
   methods: {
@@ -48,8 +53,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  padding: 10px;
+.main {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
-
 </style>

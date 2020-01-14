@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    aboutus1212
+    联系我们
   </div>
 </template>
 

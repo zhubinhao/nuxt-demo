@@ -2,7 +2,7 @@
   <div class="app">
     <Bar />
     <div class="nuxt">
-      <nuxt />
+      <Nuxt />
     </div>
     <Footer />
   </div>

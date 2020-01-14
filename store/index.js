@@ -6,7 +6,8 @@ const state = {
   todo: 1,
   path: '/',
   list: [1],
-  show: true
+  show: true,
+  audio: []
 }
 
 const getters = { // 获取state里的数据，并对其做过滤等一些操作
@@ -16,13 +17,13 @@ const mutations = { // 改变state里的数据，
     state.path = str
   },
   setData (state, obj) {
-    state.list = obj.detail
+    state[obj.key] = obj.value
   }
 }
 const actions = {
-  async GET_STARS ({ commit }) {
-    const { data } = await axios.get('banners?type=1')
-    commit('setData', data)
+  async GET_AUDIO ({ commit }) {
+    const { data } = await axios.get('banners?type=3')
+    commit('setData', { key: 'audio', value: data.detail })
   }
 }
 const store = () => new Vuex.Store({

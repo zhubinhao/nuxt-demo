@@ -1,30 +1,30 @@
 <template>
-  <div class="bar">
+  <header class="bar">
     <div class="content">
       <div class="imgBox">
         <img src="~/static/logo_pc_1.svg" alt="深蓝保官网" class="logo1">
         <img src="~/static/logo_pc_2.svg" alt="深蓝保官网" class="logo2">
       </div>
-      <div class="link">
+      <nav class="link">
         <nuxt-link :class="{active:paths==='/'}" to="/" class="bar_a">
           <span>首页</span>
         </nuxt-link>
         <nuxt-link :class="{active:paths.includes('/evaluation')}" to="/evaluation" class="bar_a">
           产品评测
         </nuxt-link>
-        <nuxt-link :class="{active:paths.includes('/insurance')}" to="/insurance" class="bar_a">
+        <nuxt-link :class="{active:paths.includes('/insurance')}" to="/insurance/all" class="bar_a">
           精选产品
         </nuxt-link>
         <a href="https://xiaoshen365.com/login" target="_blank" class="bar_a">小深保管家</a>
         <nuxt-link :class="{active:paths.includes('/aboutus')}" to="/aboutus" class="bar_a">
           关于我们
         </nuxt-link>
-      </div>
+      </nav>
       <div class="seach">
         12
       </div>
     </div>
-  </div>
+  </header>
 </template>
 <script>
 export default {
