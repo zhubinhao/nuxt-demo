@@ -8,7 +8,8 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: '深蓝保专注于保险领域，测评过上千款保险产品，帮你避开保险里的坑，明明白白买保险。帮助上万个家庭配置合适的保险方案，包括重疾险、定期寿险、医疗险、意外险。' },
+      { hid: 'keywords', name: 'keywords', content: '深蓝保,专业保险测评,重疾险,医疗险,儿童保险,意外险' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -26,7 +27,9 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    '@assets/css/iconfont.css',
+    '@assets/css/style.scss'
   ],
   /*
   ** Plugins to load before mounting the App

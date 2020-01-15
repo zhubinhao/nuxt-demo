@@ -20,6 +20,7 @@
         <template v-for="(i,key) in 4">
           <div :key="key" v-if="item['key'+i]!=''" class="label">
             <!-- <img class="dui" src="/web/img/dui.svg" alt> -->
+            <i class="iconfont icon-dui dui" />
             {{ item['key'+i] }}
           </div>
         </template>
@@ -158,6 +159,8 @@ export default {
       margin-right: 10px;
       margin-top: 10px;
       vertical-align: bottom;
+      color: #2D7BFF;
+      font-size: 16px;
     }
   }
   .ins_right {

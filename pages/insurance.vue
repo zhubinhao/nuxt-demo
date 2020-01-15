@@ -18,7 +18,9 @@
           <nuxt-child />
         </div>
       </div>
-      <div>1</div>
+      <div>
+        <Right />
+      </div>
     </main>
   </div>
 </template>
@@ -26,10 +28,12 @@
 <script>
 import { mapState } from 'vuex'
 import Carousel from '~/components/Carousel'
+import Right from '~/components/Right'
 
 export default {
   components: {
-    Carousel
+    Carousel,
+    Right
   },
   data () {
     return {
