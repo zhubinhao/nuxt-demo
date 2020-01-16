@@ -1,21 +1,15 @@
 <template>
   <div class="aboutus">
     <nav>
-      <NuxtLink :class="{active:path==='/aboutus'}" to="/aboutus" class="tab1">
-        关于我们
-      </NuxtLink>
+      <NuxtLink :class="{active:path==='/aboutus'}" to="/aboutus" class="tab1">关于我们</NuxtLink>
       <div>
         <a @click="change('one')" class="tab2">团队理念</a>
         <a @click="change('two')" class="tab2">产品&服务</a>
         <a @click="change('three')" class="tab2">发展历程</a>
         <a @click="change('four')" class="tab2">品牌数据</a>
       </div>
-      <NuxtLink :class="{active:path==='/aboutus/contact'}" to="/aboutus/contact" class="tab1 border">
-        联系我们
-      </NuxtLink>
-      <NuxtLink :class="{active:path==='/aboutus/join'}" to="/aboutus/join" class="tab1">
-        加入我们
-      </NuxtLink>
+      <NuxtLink :class="{active:path==='/aboutus/contact'}" to="/aboutus/contact" class="tab1 border">联系我们</NuxtLink>
+      <NuxtLink :class="{active:path==='/aboutus/join'}" to="/aboutus/join" class="tab1">加入我们</NuxtLink>
     </nav>
     <div class="content">
       <nuxt-child />
@@ -73,7 +67,7 @@ export default {
       height: 57px;
       line-height: 57px;
       font-size: 16px;
-      color: #333333;
+      color: #8E8E8E;
       cursor: pointer;
       padding-left: 20px;
       box-sizing: border-box;

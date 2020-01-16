@@ -1,5 +1,6 @@
 <template>
   <div>
+    <site name="产品资讯" />
     <main class="main">
       <div class="left">
         <div class="title">
@@ -36,11 +37,13 @@
 import { mapState } from 'vuex'
 import ArticleList from '~/components/ArticleList'
 import Pagination from '~/components/Pagination'
+import Site from '~/components/Site'
 
 export default {
   components: {
     'article-list': ArticleList,
-    'pagination': Pagination
+    'pagination': Pagination,
+    'site': Site
   },
   data () {
     return {
@@ -98,7 +101,6 @@ export default {
 .main{
   width: 1200px;
   margin: 0 auto;
-  padding-top:20px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

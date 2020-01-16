@@ -5,13 +5,7 @@
       <div class="left">
         <div class="bar">
           <template v-for="(value, key) in barData">
-            <NuxtLink
-              :key="key"
-              :class="{active:key===barIndex}"
-              :to="'/insurance/'+key"
-            >
-              {{ value }}
-            </NuxtLink>
+            <NuxtLink :key="key" :class="{active:key===barIndex}" :to="'/insurance/'+key">{{ value }}</NuxtLink>
           </template>
         </div>
         <div class="content">
@@ -79,6 +73,7 @@ export default {
     }
   },
   created () {
+    this.barIndex = this.$route.params.id
   },
   methods: {
   }

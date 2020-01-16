@@ -10,8 +10,7 @@
       />
       <div class="ins_content1">
         <h1>
-          <a @click="er(item.buy_url)">{{ item.name }}</a>
-          | {{ item.company_name }}
+          <a @click="er(item.buy_url)">{{ item.name }}</a> | {{ item.company_name }}
         </h1>
         <p class="tags">
           <span>保障期限：{{ item.protect_period }}</span>
@@ -19,7 +18,6 @@
         </p>
         <template v-for="(i,key) in 4">
           <div :key="key" v-if="item['key'+i]!=''" class="label">
-            <!-- <img class="dui" src="/web/img/dui.svg" alt> -->
             <i class="iconfont icon-dui dui" />
             {{ item['key'+i] }}
           </div>

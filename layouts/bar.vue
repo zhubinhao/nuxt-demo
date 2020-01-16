@@ -6,22 +6,18 @@
         <img src="~/static/logo_pc_2.svg" alt="深蓝保官网" class="logo2">
       </div>
       <nav class="link">
-        <nuxt-link :class="{active:paths==='/'}" to="/" class="bar_a">
-          <span>首页</span>
-        </nuxt-link>
-        <nuxt-link :class="{active:paths.includes('/evaluation')}" to="/evaluation" class="bar_a">
-          产品评测
-        </nuxt-link>
-        <nuxt-link :class="{active:paths.includes('/insurance')}" to="/insurance/all" class="bar_a">
-          精选产品
-        </nuxt-link>
+        <nuxt-link :class="{active:paths==='/'}" to="/" class="bar_a">首页</nuxt-link>
+        <nuxt-link :class="{active:paths.includes('/evaluation')}" to="/evaluation" class="bar_a">产品评测</nuxt-link>
+        <nuxt-link :class="{active:paths.includes('/insurance')}" to="/insurance/all" class="bar_a">精选产品</nuxt-link>
         <a href="https://xiaoshen365.com/login" target="_blank" class="bar_a">小深保管家</a>
-        <nuxt-link :class="{active:paths.includes('/aboutus')}" to="/aboutus" class="bar_a">
-          关于我们
-        </nuxt-link>
+        <nuxt-link :class="{active:paths.includes('/aboutus')}" to="/aboutus" class="bar_a">关于我们</nuxt-link>
       </nav>
       <div class="seach">
-        12
+        <div>
+          <i class="iconfont icon-search" />
+        </div>
+        <input v-model="keyworld" @keyup.enter="search" type="text" placeholder="输入搜索关键词">
+        <a @click="search">搜索</a>
       </div>
     </div>
   </header>
@@ -30,7 +26,8 @@
 export default {
   data () {
     return {
-      paths: '/'
+      paths: '/',
+      keyworld: ''
     }
   },
   watch: {
@@ -46,6 +43,9 @@ export default {
   methods: {
     setPath () {
       this.$store.commit('changePath', this.paths)
+    },
+    search () {
+      this.keyworld && this.$router.push(`/search/${this.keyworld}`)
     }
   }
 }
@@ -97,6 +97,61 @@ export default {
     }
     .active {
       color: #4379FE !important;
+    }
+  }
+  .seach{
+    width: 250px;
+    box-sizing: border-box;
+    height: 32px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    input{
+      flex: 1;
+      height: 32px;
+      box-sizing: border-box;
+      background: #F7F7F7;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      padding-left: 45px;
+      outline: none;
+      text-indent: 10px;
+    }
+    a{
+      width: 50px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      background: #2D7BFF;
+      border-radius: 0 4px 4px 0;
+      color: white;
+      font-size: 14px;
+    }
+    div{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 45px;
+      z-index: 2;
+      line-height: 32px;
+      height: 32px;
+      text-align: center;
+      &::after{
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 18px;
+        background: #DBDBDB;
+        position: absolute;
+        top: 8px;
+        left: 40px;
+        z-index: 2;
+      }
+      .icon-search{
+        font-size: 15px;
+        color: #9A9A9A;
+      }
     }
   }
 }

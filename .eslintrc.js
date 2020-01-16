@@ -13,6 +13,12 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'nuxt/no-cjs-in-config': 'off'
-  }
+    'nuxt/no-cjs-in-config': 'off',
+    'vue/singleline-html-element-content-newline': ['error', {
+      'ignoreWhenNoAttributes': true,
+      'ignoreWhenEmpty': false,
+      'ignores': ['pre', 'textarea', 'a', 'NuxtLink', 'span']
+    }]
+  },
+ 
 }

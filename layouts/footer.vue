@@ -60,7 +60,9 @@
           </div>
           <div>
             <img src="~/static/2011.png">
-            <span style="position: relative;left: 2px">微信客服</span>
+            <span style="position: relative;left: 2px">
+              微信客服
+            </span>
           </div>
         </div>
       </div>
@@ -73,7 +75,7 @@
         深圳深蓝保信息技术有限公司
       </div>
       <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备15117049号</a>
-      <a href="/p/sitemap" target="_blank" class="ditu dituAfter">
+      <a href="/sitemap" class="ditu dituAfter">
         <img src="~/static/svg/ditu.svg">
         网站地图
       </a>
