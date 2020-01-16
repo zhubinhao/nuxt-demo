@@ -1,4 +1,4 @@
-# nuxt-app
+# nuxt-demo
 
 > My remarkable Nuxt.js project
 
