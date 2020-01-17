@@ -7,17 +7,22 @@ const state = {
   path: '/',
   list: [1],
   show: true,
-  audio: []
+  audio: [],
+  visits: []
 }
 
 const getters = { // 获取state里的数据，并对其做过滤等一些操作
+  getParams (state) {
+    return state.visits[state.visits.length - 1].params
+  }
 }
 const mutations = { // 改变state里的数据，
-  changePath (state, str) {
-    state.path = str
-  },
   setData (state, obj) {
     state[obj.key] = obj.value
+  },
+  setVisits (state, value) {
+    state.visits.push(value)
+    state.path = value.path
   }
 }
 const actions = {

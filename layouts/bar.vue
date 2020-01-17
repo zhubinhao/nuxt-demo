@@ -6,11 +6,11 @@
         <img src="~/static/logo_pc_2.svg" alt="深蓝保官网" class="logo2">
       </div>
       <nav class="link">
-        <nuxt-link :class="{active:paths==='/'}" to="/" class="bar_a">首页</nuxt-link>
-        <nuxt-link :class="{active:paths.includes('/evaluation')}" to="/evaluation" class="bar_a">产品评测</nuxt-link>
-        <nuxt-link :class="{active:paths.includes('/insurance')}" to="/insurance/all" class="bar_a">精选产品</nuxt-link>
+        <nuxt-link :class="{active:path==='/'}" to="/" class="bar_a">首页</nuxt-link>
+        <nuxt-link :class="{active:path.includes('/evaluation')}" to="/evaluation" class="bar_a">产品评测</nuxt-link>
+        <nuxt-link :class="{active:path.includes('/insurance')}" to="/insurance" class="bar_a">精选产品</nuxt-link>
         <a href="https://xiaoshen365.com/login" target="_blank" class="bar_a">小深保管家</a>
-        <nuxt-link :class="{active:paths.includes('/aboutus')}" to="/aboutus" class="bar_a">关于我们</nuxt-link>
+        <nuxt-link :class="{active:path.includes('/aboutus')}" to="/aboutus" class="bar_a">关于我们</nuxt-link>
       </nav>
       <div class="seach">
         <div>
@@ -23,27 +23,21 @@
   </header>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      paths: '/',
-      keyworld: ''
+      keyworld: '',
+      visits: []
     }
   },
-  watch: {
-    $route (to, from) {
-      this.paths = to.path
-      this.setPath()
-    }
+  computed: {
+    ...mapState(['path'])
   },
   created () {
-    this.paths = this.$route.path
-    this.setPath()
+    this.visits = this.$store.state.visits
   },
   methods: {
-    setPath () {
-      this.$store.commit('changePath', this.paths)
-    },
     search () {
       this.keyworld && this.$router.push(`/search/${this.keyworld}`)
     }

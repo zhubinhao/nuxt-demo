@@ -12,8 +12,8 @@ export default {
     Product
   },
   validate ({ params }) {
-    const str = 'alldisease,medical,life,accident'
-    return str.includes(params.id)
+    const str = 'disease,medical,life,accident'
+    return !params.id || str.includes(params.id)
   },
   data () {
     return {
@@ -21,7 +21,7 @@ export default {
     }
   },
   async asyncData ({ app, params }) {
-    const type = params.id === 'all' ? '' : params.id.toUpperCase()
+    const type = params.id ? params.id.toUpperCase() : ''
     const list = await app.$axios.get(`/store/products?type=${type}&page_size=100`)
     return {
       list: list.data.list

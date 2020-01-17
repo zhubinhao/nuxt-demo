@@ -31,6 +31,9 @@ module.exports = {
     '@assets/css/iconfont.css',
     '@assets/css/style.scss'
   ],
+  router: {
+    middleware: ['visits']
+  },
   /*
   ** Plugins to load before mounting the App
   */

@@ -4,6 +4,7 @@
     <main class="main">
       <div class="left">
         <div class="bar">
+          <NuxtLink :class="{active:''===barIndex}" to="/insurance">全部</NuxtLink>
           <template v-for="(value, key) in barData">
             <NuxtLink :key="key" :class="{active:key===barIndex}" :to="'/insurance/'+key">{{ value }}</NuxtLink>
           </template>
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Carousel from '~/components/Carousel'
 import Right from '~/components/Right'
 
@@ -31,27 +32,24 @@ export default {
   },
   data () {
     return {
-      title: '精选产品-深蓝保',
       carouselArr: [],
       barData: {
-        all: '全部',
         disease: '重疾险',
         medical: '医疗险',
         life: '寿险',
         accident: '意外险'
-      },
-      barIndex: 'all'
+      }
     }
   },
   computed: {
-    ...mapState(['audio'])
-
-  },
-  watch: {
-    $route (to, from) {
-      this.barIndex = to.params.id
-      const name = this.barData[to.params.id]
-      this.title = `精选产品-${name === '全部' ? '' : name + '-'}深蓝保`
+    ...mapState(['audio', 'path']),
+    ...mapGetters(['getParams']),
+    title () {
+      const name = this.barData[this.getParams.id]
+      return `精选产品-${name ? name + '-' : ''}深蓝保`
+    },
+    barIndex () {
+      return this.getParams.id || ''
     }
   },
   async asyncData ({ app, params }) {
@@ -65,15 +63,10 @@ export default {
   },
   head () {
     return {
-      title: this.title,
-      meta: [
-        { hid: 'description', name: 'description', content: '深蓝保专注于保险领域，测评过上千款保险产品，帮你避开保险里的坑，明明白白买保险。帮助上万个家庭配置合适的保险方案，包括重疾险、定期寿险、医疗险、意外险。' },
-        { hid: 'keywords', name: 'keywords', content: '深蓝保,专业保险测评,重疾险,医疗险,儿童保险,意外险' }
-      ]
+      title: this.title
     }
   },
   created () {
-    this.barIndex = this.$route.params.id
   },
   methods: {
   }
